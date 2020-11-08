@@ -1,3 +1,4 @@
+import _ from 'lodash';
 
 const app = async () => {
   const state = {
@@ -11,7 +12,7 @@ const app = async () => {
 
   const makeCard = (title, text, imgUrl) => {
     const card = document.createElement('div');
-    card.classList.add('card', 'col-sm');
+    card.classList.add('card', 'col-sm-4');
 
     const imageElement = document.createElement('img');
     imageElement.setAttribute('src', imgUrl);
