@@ -1,6 +1,13 @@
 import _ from 'lodash';
+import './app.css';
 
 const app = async () => {
+  const hello = document.createElement('h1');
+  hello.classList.add('hello');
+  hello.innerText = 'Hello, World!';
+
+  document.body.append(hello);
+
   const state = {
     virtualItems: [],
   };
