@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 const app = async () => {
   const state = {
-    virtualItems: []
+    virtualItems: [],
   };
   const fetchVirtualItems = async (projectId) => {
     const response = await fetch(`https://store.xsolla.com/api/v2/project/${projectId}/items/virtual_items`);
@@ -39,22 +39,23 @@ const app = async () => {
   };
 
   /**
-   * @param {array} items 
+   * @param {array} items
    */
   const renderVirtualItems = (items) => {
     const content = document.getElementById('content');
 
-    const rows =_.chain(items)
-      .map(({name, description, image_url}) => makeCard( name, description, image_url ))
+    const rows = _.chain(items)
+      .map(({ name, description, image_url: imageUrl }) => makeCard(name, description, imageUrl))
       .chunk(3)
       .map((virtualItemNodes) => {
         const row = document.createElement('div');
         row.classList.add('row', 'mt-5');
         row.append(...virtualItemNodes);
         return row;
-      }).value();
+      })
+      .value();
 
-      content.append(...rows);
+    content.append(...rows);
   };
 
   state.virtualItems = await fetchVirtualItems(54015);
