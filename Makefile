@@ -2,7 +2,7 @@ build:
 	npm run build
 
 install:
-	npm install
+	npm ci
 
 lint:
 	npx eslint src
