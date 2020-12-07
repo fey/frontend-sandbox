@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Press button for random color</title>
+</head>
+
+<body>
+  <button id="color-changer">Press me!</button>
+  <h1 id="color-code">white</h1>
+</body>
+<script>
+  const maxColorNumber = 16777215;
+  const generateRandomDec = () => Math.floor(Math.random() * maxColorNumber);
+  const app = () => {
+    const button = document.getElementById('color-changer');
+
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      const colorNumber = generateRandomDec();
+      const invertedColor = (maxColorNumber - colorNumber).toString(16);
+      console.log({invertedColor});
+      const colorCode = `#${colorNumber.toString(16)}`;
+      document.body.style.backgroundColor = colorCode;
+
+      const h1 = document.getElementById('color-code');
+      h1.style.color = `#${invertedColor}`;
+      h1.innerText = colorCode;
+    });
+};
+app();
+</script>
+
+</html>
